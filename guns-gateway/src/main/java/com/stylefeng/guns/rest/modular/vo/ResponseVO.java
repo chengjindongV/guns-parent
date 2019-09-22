@@ -25,6 +25,14 @@ public class ResponseVO<M> {
         return responseVO;
     }
 
+    public static<M> ResponseVO success(String msg){ // 成功
+        ResponseVO responseVO = new ResponseVO();
+        responseVO.setStatus(0);
+        responseVO.setMsg(msg);
+
+        return responseVO;
+    }
+
     public static<M> ResponseVO serviceFail(String msg){  // 业务异常
         ResponseVO responseVO = new ResponseVO();
         responseVO.setStatus(1);
