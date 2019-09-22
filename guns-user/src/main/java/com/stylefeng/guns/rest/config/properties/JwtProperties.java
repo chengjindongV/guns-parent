@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2017-08-23 9:23
  */
 @Configuration
-@ConfigurationProperties(prefix = JwtProperties.JWT_PREFIX) //此前缀的配置读进来
+@ConfigurationProperties(prefix = JwtProperties.JWT_PREFIX)
 public class JwtProperties {
 
     public static final String JWT_PREFIX = "jwt";
@@ -24,16 +24,6 @@ public class JwtProperties {
     private String authPath = "auth";
 
     private String md5Key = "randomKey";
-
-    private String ignoreUrl = "";
-
-    public String getIgnoreUrl() {
-        return ignoreUrl;
-    }
-
-    public void setIgnoreUrl(String ignoreUrl) {
-        this.ignoreUrl = ignoreUrl;
-    }
 
     public static String getJwtPrefix() {
         return JWT_PREFIX;
