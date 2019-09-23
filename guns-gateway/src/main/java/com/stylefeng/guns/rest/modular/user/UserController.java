@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-    @Reference(interfaceClass = UserAPI.class)
+    @Reference(interfaceClass = UserAPI.class,check = false)
     private UserAPI userAPI;
 
-    @RequestMapping(name="/register" ,method = RequestMethod.POST)
+    @RequestMapping(value="/register" ,method = RequestMethod.POST)
     public ResponseVO register(UserModel userModel){
 
         if (StringUtils.isBlank(userModel.getUsername())){ // userModel.getUsername() == null || userModel.getUsername().trim().length() == 0
@@ -41,7 +41,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(name="/check" ,method = RequestMethod.POST)
+    @RequestMapping(value="/check" ,method = RequestMethod.POST)
     public ResponseVO check(String userName){
 
         if (StringUtils.isNotBlank(userName)){
@@ -58,7 +58,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(name="/logout" ,method = RequestMethod.GET)
+    @RequestMapping(value="/logout" ,method = RequestMethod.GET)
     public ResponseVO logout(){
         /*
             应用：
@@ -76,7 +76,7 @@ public class UserController {
         return ResponseVO.success("用户退出成功");
     }
 
-    @RequestMapping(name="/getUserInfo" ,method = RequestMethod.GET)
+    @RequestMapping(value="/getUserInfo" ,method = RequestMethod.GET)
     public ResponseVO getUserInfo(){
 
         // 获取当前登录用户
@@ -97,7 +97,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(name="/updateUserInfo" ,method = RequestMethod.POST)
+    @RequestMapping(value="/updateUserInfo" ,method = RequestMethod.POST)
     public ResponseVO updateUserInfo(UserInfoModel userInfoModel){
 
         // 获取当前登录用户

@@ -18,7 +18,7 @@ import java.util.Date;
  * @Date: 2019/9/18 23:31
  */
 @Component
-@Service(interfaceClass = UserAPI.class)
+@Service(interfaceClass = UserAPI.class,loadbalance = "roundrobin") // 负载均衡策略loadbalance = "roundrobin" 轮询
 public class UserServiceImpl implements  UserAPI{
 
     @Autowired

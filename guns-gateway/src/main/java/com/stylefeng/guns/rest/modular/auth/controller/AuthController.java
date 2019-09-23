@@ -29,7 +29,7 @@ public class AuthController {
     private JwtTokenUtil jwtTokenUtil;
 
 
-    @Reference(interfaceClass = UserAPI.class)
+    @Reference(interfaceClass = UserAPI.class,check = false)
     private UserAPI userAPI;
 
     @RequestMapping(value = "${jwt.auth-path}")
@@ -37,7 +37,7 @@ public class AuthController {
 
         boolean validate =true;
         // 去掉guns自身携带的用户名密码验证机制，使用我们自己的
-        int userId = 3; //userAPI.login(authRequest.getUserName(),authRequest.getPassword());
+        int userId = userAPI.login(authRequest.getUserName(),authRequest.getPassword());
 
         if (userId == 0){ //如果为0，就是验证不通过
             validate = false;
